@@ -28,7 +28,7 @@
 
   **1) Получение списков студентов по номерам групп**
 
-'Students info page -> ввод номеров групп в поле "Insert group/flow number" -> кнопка "Show students by group"'
+`Students info page -> ввод номеров групп в поле "Insert group/flow number" -> кнопка "Show students by group"`
 
   **2) Получение списков студентов по номерам потоков**
 
