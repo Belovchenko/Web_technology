@@ -11,7 +11,7 @@ public class Auditorium
     @Id
     private int auditorium_num;
 
-    @OneToMany(mappedBy = "auditorium_num", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "auditorium", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Study_Class> study_auditorium_info;
 
     private int capacity;
