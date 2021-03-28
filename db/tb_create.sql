@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS Course (
 
 CREATE TABLE IF NOT EXISTS Auditorium (
 	auditorium_num int PRIMARY KEY,
-	coverage int NOT NULL
+	capacity int NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Study_Class (
@@ -32,15 +32,17 @@ CREATE TABLE IF NOT EXISTS Study_Class (
 );
 
 CREATE TABLE IF NOT EXISTS CourseStudent_Info (
+	id SERIAL PRIMARY KEY,
 	course_id int REFERENCES Course ON DELETE CASCADE ON UPDATE CASCADE,
 	student_id int REFERENCES Student ON DELETE CASCADE ON UPDATE CASCADE,
-	course_sem int NOT NULL,
-	PRIMARY KEY (course_id, student_id)
+	course_sem int NOT NULL
+	--PRIMARY KEY (course_id, student_id)
 );
 
 CREATE TABLE IF NOT EXISTS CourseTeacher_Info (
+	id SERIAL PRIMARY KEY,
 	course_id int REFERENCES Course ON DELETE CASCADE ON UPDATE CASCADE,
 	teacher_id int REFERENCES Teacher ON DELETE CASCADE ON UPDATE CASCADE,
-	course_sem int NOT NULL,
-	PRIMARY KEY (course_id, teacher_id)
+	course_sem int NOT NULL
+	--PRIMARY KEY (course_id, teacher_id)
 );
