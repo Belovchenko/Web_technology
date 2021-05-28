@@ -1,0 +1,178 @@
+body {
+    /*margin: 30px;*/
+    background: beige /*#fffacd;*/
+}
+
+/*
+h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    max-width: 320px;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    color: #465457;
+}*/
+
+.head h1 {
+    text-align: center;
+    padding-bottom: 5px;
+
+    font-family: Roboto, serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    /*max-width: 1920px;*/
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    color: #465457;
+}
+.head h1:before {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    margin-left: -5%;
+    width: 10%;
+    height: 2px;
+    background: #90ee90;
+}
+.head h1:after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    margin-left: -3%;
+    width: 6%;
+    height: 2px;
+    background: #90ee90;
+}
+
+.navbar {
+    /*margin: 0;*/
+    margin-left: 30%;
+    padding: 0;
+    list-style-type: none;
+    border: 2px solid #257225;
+    border-radius: 20px 5px;
+    width: 700px; /* 550 */
+    text-align: center;
+    background-color: #90ee90;
+    font-family: Roboto, serif;
+}
+.navbar li { display: inline; }
+
+.navbar a {
+    color: #fff;
+    padding: 1px 10px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    width: 120px; /*100*/
+}
+.navbar a:hover {
+    border-radius: 20px 5px;
+    background-color: #257225;
+}
+
+#addingform{
+    margin: 0 auto;
+    width:250px;
+}
+
+table {
+    font-size: 15px;
+    width: 50%;
+    text-align: center;
+    border-collapse: collapse;
+    margin-left: 25%;
+    margin-top: 2%;
+    align: center;
+}
+th {
+    font-family: Roboto, serif;
+    color: #465457;
+    border-bottom: 2px solid #257225;
+    /*padding: 12px 17px;*/
+    height: 20px;
+}
+td {
+    font-family: Roboto, serif;
+    color: #465457;
+    font-size: 15px;
+    border-bottom: 1px solid #257225;
+    border-right:1px solid #257225;
+    border-left:1px solid #257225;
+    border-top: 1px solid #257225;
+    /*padding: 7px 17px;*/
+    height: 30px;
+}
+
+#search-group, #search-course, #timestamp1 {
+    margin-left: 25%;
+    margin-top: 1%;
+}
+
+#search-stream, #timestamp2, #showfreeaudit {
+    margin-left: 1%;
+    margin-top: 1%;
+}
+li {
+    list-style-type: none;
+}
+
+table a {
+    color: #465457; /* Цвет обычной ссылки */
+}
+table a:visited {
+    color: #465457; /* Цвет посещенной ссылки */
+}
+
+table a:hover{
+    color: #257225
+}
+
+button {
+    text-align: center;
+}
+
+#add_student {
+    margin-left: 21%;
+}
+
+#add_teacher {
+    margin-left: 30%;
+}
+
+#add_course {
+    margin-left: 69%;
+    margin-top: 1%;
+}
+
+#delete_student, #edit_student  {
+    margin-left: 68%;
+}
+
+#delete_teacher {
+    margin-left: 66%;
+    margin-top: 1%;
+}
+
+#delete_course {
+    margin-left: 70%;
+}
+
+#edit_course {
+    margin-left: 68%;
+}
+
+#edit_course1 {
+    margin-left: 66%;
+}
+/*.head h1{
+    background: #90ee90;
+    padding: 10px 20px;
+    text-align: center;
+    font-family: Roboto, serif;
+}*/
