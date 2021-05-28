@@ -7,9 +7,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import entities.Teacher;
+import org.hibernate.query.Query;
 import utils.HibernateSessionFactory;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDAOImpl implements StudentDAO
@@ -30,7 +32,10 @@ public class StudentDAOImpl implements StudentDAO
 
     public Student findById(int id)
     {
-        return HibernateSessionFactory.getSessionFactory().openSession().get(Student.class, id);
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        Student st = session.get(Student.class, id);
+        session.close();
+        return st;
     }
 
     public void addStudent(Student student)
@@ -58,6 +63,20 @@ public class StudentDAOImpl implements StudentDAO
         session.delete(student);
         T.commit();
         session.close();
+    }
+
+    public List<Student> getAll() {
+        Session session = null;
+        List<Student> students = new ArrayList<Student>();
+        session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<Student> query = session.createQuery("FROM Student", Student.class);
+        students = (List<Student>) query.list();
+        session.getTransaction().commit();
+        if (session != null && session.isOpen()) {
+            session.close();
+        }
+        return students;
     }
 
     public List<Study_Class> showTimetable(Timestamp ts1, Timestamp ts2, Student student)

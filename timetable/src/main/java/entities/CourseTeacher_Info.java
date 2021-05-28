@@ -12,17 +12,22 @@ public class CourseTeacher_Info {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "course_id")
     private Course course;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
     private int course_sem;
 
     public CourseTeacher_Info() {}
+
+    public CourseTeacher_Info(Course course, Teacher teacher) {
+        this.course = course;
+        this.teacher = teacher;
+    }
 
     public int getId()
     {

@@ -8,16 +8,21 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import entities.Teacher;
+import org.hibernate.query.Query;
 import utils.HibernateSessionFactory;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherDAOImpl implements TeacherDAO
 {
     public Teacher findById(int id)
     {
-        return HibernateSessionFactory.getSessionFactory().openSession().get(Teacher.class, id);
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        Teacher teacher = session.get(Teacher.class, id);
+        session.close();
+        return teacher;
     }
 
     public void addTeacher(Teacher teacher)
@@ -49,8 +54,8 @@ public class TeacherDAOImpl implements TeacherDAO
 
     public List<Study_Class> showTimetable(Timestamp ts1, Timestamp ts2, Teacher teacher)
     {
-        String s1 = "SELECT s FROM Study_Class s JOIN CourseTeacher_Info ct ON (ct.course = s.course) WHERE ((ct.teacher = '"
-                + teacher.getTeacher_id() + "') AND (s.time >= '" + ts1 + "') AND (s.time <= '" + ts2 + "'))";
+        //System.out.println("hello= '" + list.get(1).getClass_id()+"'");
+        String s1 = "SELECT s FROM Study_Class s WHERE ((s.teacher = '" + teacher.getTeacher_id() + "') AND (s.time >= '" + ts1 + "') AND (s.time <= '" + ts2 + "'))";
         List<Study_Class> result = (List<Study_Class>) HibernateSessionFactory.getSessionFactory().openSession().createQuery(s1, Study_Class.class).list();
         return result;
     }
@@ -61,5 +66,19 @@ public class TeacherDAOImpl implements TeacherDAO
                 + course.getCourse_id() + "')";
         List<Teacher> result = (List<Teacher>) HibernateSessionFactory.getSessionFactory().openSession().createQuery(s1, Teacher.class).list();
         return result;
+    }
+
+    public List<Teacher> getAll() {
+        Session session = null;
+        List<Teacher> teachers = new ArrayList<Teacher>();
+        session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<Teacher> query = session.createQuery("FROM Teacher", Teacher.class);
+        teachers = (List<Teacher>) query.list();
+        session.getTransaction().commit();
+        if (session != null && session.isOpen()) {
+            session.close();
+        }
+        return teachers;
     }
 }

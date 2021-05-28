@@ -12,11 +12,11 @@ public class CourseStudent_Info
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "course_id")
     private Course course;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student_id")
     private Student student;
 
@@ -62,6 +62,11 @@ public class CourseStudent_Info
     public void setCourse_sem(int course_sem)
     {
         this.course_sem = course_sem;
+    }
+
+    public CourseStudent_Info(Course course, Student student) {
+        this.course = course;
+        this.student = student;
     }
 
     @Override

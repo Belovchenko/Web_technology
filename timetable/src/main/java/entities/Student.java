@@ -20,7 +20,7 @@ public class Student
 
     //@ManyToMany
     //@JoinTable(name = "CourseStudent_Info", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn (name = "student_id"))
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CourseStudent_Info> courses;
 
 

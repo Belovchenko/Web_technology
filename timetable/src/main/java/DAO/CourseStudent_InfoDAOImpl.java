@@ -1,9 +1,14 @@
 package DAO;
 
+import entities.Auditorium;
 import entities.CourseStudent_Info;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import utils.HibernateSessionFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CourseStudent_InfoDAOImpl implements CourseStudent_InfoDAO
 {
@@ -37,5 +42,19 @@ public class CourseStudent_InfoDAOImpl implements CourseStudent_InfoDAO
         session.delete(cs_info);
         T.commit();
         session.close();
+    }
+
+    public List<CourseStudent_Info> getAll() {
+        Session session = null;
+        List<CourseStudent_Info> cs_info = new ArrayList<CourseStudent_Info>();
+        session = HibernateSessionFactory.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query<CourseStudent_Info> query = session.createQuery("FROM CourseStudent_Info", CourseStudent_Info.class);
+        cs_info = (List<CourseStudent_Info>) query.list();
+        session.getTransaction().commit();
+        if (session != null && session.isOpen()) {
+            session.close();
+        }
+        return cs_info;
     }
 }

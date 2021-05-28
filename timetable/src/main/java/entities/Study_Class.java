@@ -29,6 +29,13 @@ public class Study_Class
 
     public Study_Class() {}
 
+    public Study_Class(Course course, Teacher teacher, Auditorium auditorium, Timestamp time) {
+        this.course = course;
+        this.teacher = teacher;
+        this.auditorium = auditorium;
+        this.time = time;
+    }
+
     public int getClass_id() {
         return class_id;
     }

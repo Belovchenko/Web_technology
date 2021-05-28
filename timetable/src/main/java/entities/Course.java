@@ -16,13 +16,13 @@ public class Course
     private int coverage;
     private int year;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CourseStudent_Info> course_student_info;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CourseTeacher_Info> course_teacher_info;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Study_Class> course_study_info;
 
     public Course() {}
@@ -75,6 +75,22 @@ public class Course
     public void setYear(int year)
     {
         this.year = year;
+    }
+
+    public Set<CourseStudent_Info> getCourse_student_info() {
+        return course_student_info;
+    }
+
+    public void setCourse_student_info(Set<CourseStudent_Info> course_student_info) {
+        this.course_student_info = course_student_info;
+    }
+
+    public Set<CourseTeacher_Info> getCourse_teacher_info() {
+        return course_teacher_info;
+    }
+
+    public void setCourse_teacher_info(Set<CourseTeacher_Info> course_teacher_info) {
+        this.course_teacher_info = course_teacher_info;
     }
 
 }
